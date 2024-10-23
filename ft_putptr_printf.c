@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putptr_printf.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbergos <jbergos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 20:33:52 by jbergos           #+#    #+#             */
-/*   Updated: 2024/10/23 03:01:24 by jbergos          ###   ########.fr       */
+/*   Created: 2024/10/22 23:36:10 by jbergos           #+#    #+#             */
+/*   Updated: 2024/10/23 01:26:41 by jbergos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
+#define hex "0123456789abcdef"
 
-#include<stdarg.h>
-#include<unistd.h>
+void	ft_puthexa(unsigned long nb)
+{
+	if (nb >= 15)
+	{
+		ft_puthexa(nb / 16);
+	}
+		ft_putchar_printf(hex[nb % 16]);
+}
 
-int		ft_printf(const char *format, ...);
-void	ft_putchar_printf(int c);
-void	ft_putstr_printf(char *s);
-void	ft_putptr_printf(void *ptr);
-void	ft_putint_printf(int n);
-#endif
+void	ft_putptr_printf(void *ptr)
+{
+	unsigned long nb;
+	if (!ptr)
+		return (ft_putstr_printf("(nil)"));
+	
+	ft_putstr_printf("0x");
+	
+	nb = (unsigned long)ptr;
+	ft_puthexa(nb);
+}
+
+

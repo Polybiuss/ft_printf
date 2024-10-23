@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putint_printf.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbergos <jbergos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 20:33:52 by jbergos           #+#    #+#             */
-/*   Updated: 2024/10/23 03:01:24 by jbergos          ###   ########.fr       */
+/*   Created: 2024/10/23 03:00:00 by jbergos           #+#    #+#             */
+/*   Updated: 2024/10/23 03:15:40 by jbergos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-#include<stdarg.h>
-#include<unistd.h>
+void	ft_putint_printf(int n)
+{
+	long nb;
 
-int		ft_printf(const char *format, ...);
-void	ft_putchar_printf(int c);
-void	ft_putstr_printf(char *s);
-void	ft_putptr_printf(void *ptr);
-void	ft_putint_printf(int n);
-#endif
+	nb = (long)n;
+	if (nb < 0)
+	{
+		nb = -nb;
+		ft_putchar_printf('-');
+	}
+	if (nb > 9)
+	{
+		ft_putint_printf(nb / 10);
+	}
+		ft_putchar_printf((nb % 10) + '0');
+}
