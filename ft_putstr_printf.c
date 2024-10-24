@@ -6,17 +6,21 @@
 /*   By: jbergos <jbergos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:58:46 by jbergos           #+#    #+#             */
-/*   Updated: 2024/10/22 21:04:09 by jbergos          ###   ########.fr       */
+/*   Updated: 2024/10/23 21:48:35 by jbergos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putstr_printf(char *s)
+int	ft_putstr_printf(char *s)
 {
-	while (*s)
+	int i;
+
+	i = 0;
+	while (s[i])
 	{
-		write(1, s, 1);
-		++s;
+		write(1, &s[i], 1);
+		i++;
 	}
+	return(i);
 }

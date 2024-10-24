@@ -6,25 +6,28 @@
 /*   By: jbergos <jbergos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 03:00:00 by jbergos           #+#    #+#             */
-/*   Updated: 2024/10/23 03:15:40 by jbergos          ###   ########.fr       */
+/*   Updated: 2024/10/24 00:49:24 by jbergos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putint_printf(int n)
+int	ft_putint_printf(int n)
 {
+	int i;
 	long nb;
 
+	i = 0;
 	nb = (long)n;
 	if (nb < 0)
 	{
 		nb = -nb;
-		ft_putchar_printf('-');
+		i += ft_putchar_printf('-');
 	}
 	if (nb > 9)
 	{
-		ft_putint_printf(nb / 10);
+		i += ft_putint_printf(nb / 10);
 	}
-		ft_putchar_printf((nb % 10) + '0');
+		i +=ft_putchar_printf((nb % 10) + '0');
+		return (i);
 }

@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr_printf.c                                 :+:      :+:    :+:   */
+/*   ft_putx_printf.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbergos <jbergos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 23:36:10 by jbergos           #+#    #+#             */
-/*   Updated: 2024/10/24 02:42:32 by jbergos          ###   ########.fr       */
+/*   Created: 2024/10/24 02:10:27 by jbergos           #+#    #+#             */
+/*   Updated: 2024/10/24 02:42:18 by jbergos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static int	ft_puthexa(unsigned long nb, int n)
+#include<stdio.h>
+static int	ft_putxhexa(unsigned nb, int n)
 {
 	if (nb >= 16)
-	{
-		n = (ft_puthexa(nb / 16, n));
-	}
-		n += ft_putchar_printf(hex[nb % 16]);
-		return (n);
-		
+		n = (ft_putxhexa(nb / 16, n));
+	n += ft_putchar_printf(hex[nb % 16]);
+	return (n);
 }
 
-int	ft_putptr_printf(void *ptr)
+int	ft_putx_printf(int n)
 {
 	int count;
-	unsigned long nb;
+	unsigned nb;
 
 	count = 0;
-	if (!ptr)
-		return (ft_putstr_printf("(nil)"));
-	
-	count +=ft_putstr_printf("0x");
-	
-	nb = (unsigned long)ptr;
-	return (ft_puthexa(nb, count));
+	nb = (unsigned)n;
+	printf("En hexa %u\n", n);
+	return (ft_putxhexa(nb, count));
 }
-
-

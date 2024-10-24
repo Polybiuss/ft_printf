@@ -6,13 +6,14 @@
 /*   By: jbergos <jbergos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 20:54:52 by jbergos           #+#    #+#             */
-/*   Updated: 2024/10/22 21:07:06 by jbergos          ###   ########.fr       */
+/*   Updated: 2024/10/23 21:47:50 by jbergos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar_printf(int c)
+int	ft_putchar_printf(int c)
 {
 	write(1, &c, 1);
+	return (1);
 }
