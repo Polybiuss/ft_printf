@@ -6,7 +6,7 @@
 /*   By: jbergos <jbergos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 03:00:00 by jbergos           #+#    #+#             */
-/*   Updated: 2024/10/24 00:49:24 by jbergos          ###   ########.fr       */
+/*   Updated: 2024/10/24 22:25:32 by jbergos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_putint_printf(int n)
 {
-	int i;
-	long nb;
+	int		i;
+	long	nb;
 
 	i = 0;
 	nb = (long)n;
@@ -28,6 +28,6 @@ int	ft_putint_printf(int n)
 	{
 		i += ft_putint_printf(nb / 10);
 	}
-		i +=ft_putchar_printf((nb % 10) + '0');
-		return (i);
+	i += ft_putchar_printf((nb % 10) + '0');
+	return (i);
 }
